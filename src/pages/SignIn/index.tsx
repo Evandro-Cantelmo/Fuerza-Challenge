@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AuthForm from '../../components/AuthForm';
 
 /**
  * @export
@@ -10,5 +11,21 @@ import React from 'react';
  * SignIn page
  */
 export default function SignIn() {
-  return <>ss</>;
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  return (
+    <AuthForm
+      title="Sign in"
+      linkLabel="Sign up"
+      linkPath="/"
+      username={username}
+      password={password}
+      setUsername={setUsername}
+      setPassword={setPassword}
+      usernameLabel="Your username"
+      passwordLabel="Your password"
+      forgotPassword
+    />
+  );
 }

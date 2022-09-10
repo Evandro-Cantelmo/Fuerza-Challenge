@@ -7,5 +7,6 @@ export default {
     },
     white: '#FFFFFF',
     gray: '#736D6B',
+    green: '#B8E5E3',
   },
 } as const;
