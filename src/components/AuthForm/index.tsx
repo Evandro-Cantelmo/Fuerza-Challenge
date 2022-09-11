@@ -5,6 +5,7 @@ import { Container, Form } from './styles';
 import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
 import Input from '../Input';
+import Button from '../../pages/CustomButton';
 
 /**
  * @export
@@ -30,6 +31,7 @@ export default function AuthForm({
   optionalEmail,
   email,
   setEmail,
+  submitButton,
 }: IAuthForm) {
   return (
     <Container>
@@ -63,6 +65,7 @@ export default function AuthForm({
             id="email"
           />
         )}
+        <Button>{submitButton}</Button>
       </Form>
     </Container>
   );

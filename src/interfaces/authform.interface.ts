@@ -14,4 +14,5 @@ export interface IAuthForm {
   optionalEmail?: boolean;
   email?: string;
   setEmail?: React.Dispatch<React.SetStateAction<string>>;
+  submitButton: string;
 }

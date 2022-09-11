@@ -23,10 +23,10 @@ export const Container = styled.div`
       top: 50%;
 
       transform: translate(0, -50%);
-      transition: top 0.2s, font-size 0.2s;
+      transition: all 0.2s;
 
       font-weight: 600;
-      color: ${theme.colors.brown};
+      color: ${theme.colors.brown.secondary};
     }
 
     input {
@@ -35,7 +35,7 @@ export const Container = styled.div`
       margin-top: auto;
 
       font-size: 1rem;
-      color: ${theme.colors.brown};
+      color: ${theme.colors.brown.primary};
       font-weight: 300;
 
       background: transparent;
@@ -49,10 +49,10 @@ export const Container = styled.div`
         outline: none;
 
         + label {
-          top: 28%;
+          top: 25%;
 
           color: ${theme.colors.gray};
-          font-size: 0.75rem;
+          font-size: 9px;
           font-weight: 400;
         }
       }

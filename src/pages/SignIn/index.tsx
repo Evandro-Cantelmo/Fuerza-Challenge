@@ -26,6 +26,7 @@ export default function SignIn() {
       usernameLabel="Your username"
       passwordLabel="Your password"
       forgotPassword
+      submitButton="Log In"
     />
   );
 }

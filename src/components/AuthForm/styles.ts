@@ -3,10 +3,11 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   ${({ theme }) => css`
     display: grid;
+
     grid-template-rows: repeat(3, auto);
     grid-template-columns: 1fr auto;
-    gap: 2rem;
     grid-template-areas: 'img img' 'title anchor' 'form form';
+    gap: 2rem;
 
     width: 100%;
     max-width: 720px;
@@ -17,7 +18,7 @@ export const Container = styled.div`
       img {
         width: 16rem;
 
-        margin-bottom: 4.5rem;
+        margin-bottom: 3rem;
       }
     }
 
@@ -28,10 +29,9 @@ export const Container = styled.div`
 
       font-size: 12px;
       font-weight: 600;
-
       text-decoration: underline;
 
-      color: ${theme.colors.brown};
+      color: ${theme.colors.brown.primary};
 
       text-align: right;
 
@@ -43,10 +43,9 @@ export const Container = styled.div`
 
       font-weight: 400;
       font-size: 32px;
-
-      color: ${theme.colors.brown};
-
       white-space: nowrap;
+
+      color: ${theme.colors.brown.primary};
     }
   `}
 `;
@@ -62,16 +61,13 @@ export const Form = styled.form`
       margin: auto 0 auto auto;
 
       font-size: 1rem;
-
       text-decoration: underline;
-
-      color: ${theme.colors.brown};
+      color: ${theme.colors.brown.secondary};
     }
 
     button {
-      margin: auto;
-
-      margin-top: 2rem;
+      margin: 2rem auto auto;
+      font-weight: 600;
     }
   `}
 `;
