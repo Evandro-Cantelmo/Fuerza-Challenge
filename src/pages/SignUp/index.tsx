@@ -29,7 +29,7 @@ export default function SignUp() {
       usernameLabel="Define a username"
       passwordLabel="Define a password"
       optionalEmail
-      submitButton="Log In"
+      submitButton="Create account"
     />
   );
 }
