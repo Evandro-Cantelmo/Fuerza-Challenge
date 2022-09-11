@@ -5,14 +5,14 @@ import Header from '../../components/Header';
 /**
  * @export
  * @component
- * @name CreateJournal
+ * @name ListJournal
  *
  *
  * @description
- * CreateJournal page
+ * ListJournal page
  */
 
-export default function CreateJournal() {
+export default function ListJournal() {
   return (
     <>
       <Header></Header>
