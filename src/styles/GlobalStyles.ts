@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
       width: 100vw;
       min-height: 100vh;
 
-      padding: 120px 27.5px 0;
+      padding:  27.5px ;
     }
 
     * {

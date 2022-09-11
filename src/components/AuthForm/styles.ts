@@ -12,6 +12,8 @@ export const Container = styled.div`
     width: 100%;
     max-width: 720px;
 
+    padding: 120px 0 0 0;
+
     a:first-child {
       grid-area: img;
 

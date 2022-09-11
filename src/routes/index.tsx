@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { SignIn, SignUp } from '../pages';
+import CreateJournal from '../pages/CreateJournal';
 
 /**
  * @export
@@ -17,7 +18,8 @@ export const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={SignIn} />
-        <Route path="/signup" exact component={SignUp} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/emptyjournal" component={CreateJournal} />
       </Switch>
     </BrowserRouter>
   );
