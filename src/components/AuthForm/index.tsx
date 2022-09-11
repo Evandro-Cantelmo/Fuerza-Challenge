@@ -5,7 +5,7 @@ import { Container, Form } from './styles';
 import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
 import Input from '../Input';
-import Button from '../../pages/CustomButton';
+import Button from '../CustomButton';
 
 /**
  * @export
