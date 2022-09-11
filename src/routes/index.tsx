@@ -19,7 +19,7 @@ export const Routes = () => {
       <Switch>
         <Route path="/" exact component={SignIn} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/emptyjournal" component={ListJournal} />
+        <Route path="/journalList" component={ListJournal} />
       </Switch>
     </BrowserRouter>
   );
