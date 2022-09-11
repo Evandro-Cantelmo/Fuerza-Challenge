@@ -4,28 +4,31 @@ import AuthForm from '../../components/AuthForm';
 /**
  * @export
  * @component
- * @name SignIn
+ * @name SignUp
  *
  *
  * @description
- * SignIn page
+ * SignUp page
  */
-export default function SignIn() {
+export default function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   return (
     <AuthForm
-      title="Sign in"
-      linkLabel="Sign up"
-      linkPath="/signup"
+      title="Sign Up"
+      linkLabel="Already have an account"
+      linkPath="/"
       username={username}
       password={password}
       setUsername={setUsername}
       setPassword={setPassword}
-      usernameLabel="Your username"
-      passwordLabel="Your password"
-      forgotPassword
+      email={email}
+      setEmail={setEmail}
+      usernameLabel="Define a username"
+      passwordLabel="Define a password"
+      optionalEmail
       submitButton="Log In"
     />
   );

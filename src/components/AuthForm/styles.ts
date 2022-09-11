@@ -29,6 +29,7 @@ export const Container = styled.div`
 
       font-size: 12px;
       font-weight: 600;
+
       text-decoration: underline;
 
       color: ${theme.colors.brown.primary};

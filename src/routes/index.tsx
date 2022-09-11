@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { SignIn } from '../pages';
+import { SignIn, SignUp } from '../pages';
 
 /**
  * @export
@@ -17,6 +17,7 @@ export const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={SignIn} />
+        <Route path="/signup" exact component={SignUp} />
       </Switch>
     </BrowserRouter>
   );
