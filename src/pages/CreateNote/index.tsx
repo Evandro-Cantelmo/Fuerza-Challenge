@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Button, Header } from '../../components';
-import { Container } from './styles';
+import { Button, Header, NavBar } from '../../components';
+import { Container, Plus } from './styles';
 
 export default function CreateNote() {
   const [title, setTitle] = useState('');
@@ -16,6 +16,7 @@ export default function CreateNote() {
     <>
       <Header />
       <Container>
+        <NavBar title="HTML"/>
         <input placeholder="Title" onChange={handleTitle} value={title}></input>
         <textarea
           placeholder="Write your note"

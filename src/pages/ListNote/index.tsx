@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../../components';
+import { Button, NavBar } from '../../components';
 import EmptyState from '../../components/EmptyState';
 import Header from '../../components/Header';
 import { BoxContent, Container, GridContent, Plus } from './styles';
@@ -19,18 +19,18 @@ export default function ListNote() {
 
   return (
     <>
-      <Header>
-        {test?.length && (
-          <Button onOutline>
-            <Plus />
-            Add Note
-          </Button>
-        )}
-      </Header>
+      <Header/>
+
       {test?.length < 1 ? (
         <EmptyState linkPath="/" linkLabel="Create a note" />
       ) : (
         <Container>
+                  <NavBar title="HTML">
+          <Button onOutline>
+            <Plus />
+            Add note
+          </Button>
+        </NavBar>
           <GridContent>
             {test?.map(() => (
               <BoxContent key=''>

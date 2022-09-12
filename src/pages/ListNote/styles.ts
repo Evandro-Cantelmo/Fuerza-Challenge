@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 1;
+  margin-top: 30px;
 
   width: 100%;
   max-width: 720px;
@@ -25,7 +26,7 @@ export const GridContent = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 0px;
 `;
 export const BoxContent = styled.div`
   display: flex;
