@@ -38,7 +38,7 @@ export const BoxContent = styled.div`
   padding: 10px;
 
   background: white;
-  box-shadow: -1px 1px 0px 1px #faf2ec;
+  box-shadow: -3px 2px 0px 2px #faf2ec, -5px 5px 20px rgba(0, 0, 0, 0.3);
   overflow-wrap: anywhere;
   overflow: hidden;
 

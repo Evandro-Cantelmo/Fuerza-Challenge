@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Button, Header, NavBar } from '../../components';
-import { Container, Plus } from './styles';
+import { Container } from './styles';
 
 export default function CreateNote() {
   const [title, setTitle] = useState('');
