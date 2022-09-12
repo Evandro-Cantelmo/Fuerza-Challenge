@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import Button from '../../components/CustomButton';
-import Header from '../../components/Header';
-import Input from '../../components/Input';
-import JournalCard from '../../components/JournalCard';
+
+import { Button, Header, Input, JournalCard } from '../../components';
 import theme from '../../styles/theme';
 import { Container, InputContainer } from './styles';
 

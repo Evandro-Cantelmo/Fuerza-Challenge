@@ -26,5 +26,10 @@ export const GridContent = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-top: 40px;
-  
+`;
+export const Plus = styled.span`
+  &::after{
+    content: '+';
+    font-size: 22px;
+  }
 `;

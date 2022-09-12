@@ -1,9 +1,10 @@
 import React from 'react';
+import { Button } from '../../components';
 import EmptyState from '../../components/EmptyState';
 import Header from '../../components/Header';
 import JournalCard from '../../components/JournalCard';
 import theme from '../../styles/theme';
-import { Container, GridContent } from './styles';
+import { Container, GridContent, Plus } from './styles';
 
 /**
  * @export
@@ -20,13 +21,13 @@ export default function ListJournal() {
 
   return (
     <>
-      <Header></Header>
-      {test.length < 1 ? (
+      <Header>{test?.length && <Button onOutline><Plus/>Add Journal</Button>}</Header>
+      {test?.length < 1 ? (
         <EmptyState linkPath="/" linkLabel="Create a journal" />
       ) : (
         <Container>
           <GridContent>
-            {test.map((tes, index) => (
+            {test?.map((tes, index) => (
               <JournalCard
                 key=""
                 bigPartHeight="201px"
