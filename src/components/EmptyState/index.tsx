@@ -19,7 +19,7 @@ export default function EmptyState({ linkPath, linkLabel }: IEmpty) {
     <>
       <Container>
         <Emptyfloating>
-          <img src={emptyState} alt="empty state image" />
+          <img src={emptyState} alt="" />
           <Link to={linkPath}>{linkLabel}</Link>
         </Emptyfloating>
       </Container>

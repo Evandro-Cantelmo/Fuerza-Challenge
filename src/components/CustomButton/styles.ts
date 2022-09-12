@@ -18,6 +18,7 @@ export const CustomButton = styled.button<{
     border-radius: 2rem;
 
     background-color: ${theme.colors.brown.primary};
+
     font-weight: 600;
     color: ${theme.colors.white};
 

@@ -19,7 +19,7 @@ export default function Header({ children }: IHeader) {
     <Container>
       <HeaderContent>
         <Link to="/">
-          <img src={logo}></img>
+          <img src={logo} alt="nucturnal name logo"></img>
         </Link>
         {children || null}
       </HeaderContent>

@@ -8,6 +8,11 @@ export default {
     white: '#FFFFFF',
     gray: '#736D6B',
     green: '#B8E5E3',
+    blue: {
+      primary: ' #3B4E8D',
+      secondary: '#5091D6',
+      tertiary: '#B8E5E3',
+    },
   },
   fonts: {
     family: {
