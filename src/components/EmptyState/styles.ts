@@ -38,12 +38,17 @@ export const Emptyfloating = styled.div`
     img {
       max-width: 400px;
       width: 100%;
-      padding-top: 70px;
+      padding-top: 10px;
 
       animation-name: ${UpDown};
       animation-duration: 3.5s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
+    }
+    h2{
+      padding-top: 10px;
+      font-family: ${theme.fonts.family.secondary};
+      font-size: 1.7rem;
     }
 
     a {

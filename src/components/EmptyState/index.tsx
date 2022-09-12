@@ -14,11 +14,13 @@ import { IEmpty } from '../../interfaces/empty.interface';
  * EmptyState component
  */
 
-export default function EmptyState({ linkPath, linkLabel }: IEmpty) {
+export default function EmptyState({ title, linkPath, linkLabel }: IEmpty) {
   return (
     <>
       <Container>
         <Emptyfloating>
+          {title !== undefined && <h2>{title}</h2>}
+
           <img src={emptyState} alt="" />
           <Link to={linkPath}>{linkLabel}</Link>
         </Emptyfloating>
