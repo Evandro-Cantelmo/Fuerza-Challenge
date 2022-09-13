@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 
 export interface IAuthForm {
+  authenticated: boolean;
   title: string;
   linkPath: string;
   linkLabel: string;
@@ -15,4 +16,5 @@ export interface IAuthForm {
   email?: string;
   setEmail?: React.Dispatch<React.SetStateAction<string>>;
   submitButton: string;
+  handleOnSubmitForm: (e: FormEvent<Element>) => void;
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import { IAuthForm } from '../../interfaces/authform.interface';
 import { Container, Form } from './styles';
 import logo from '../../assets/logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Input from '../Input';
 import Button from '../Button';
 
@@ -18,6 +18,7 @@ import Button from '../Button';
  */
 
 export default function AuthForm({
+  authenticated,
   title,
   linkPath,
   linkLabel,
@@ -32,8 +33,11 @@ export default function AuthForm({
   email,
   setEmail,
   submitButton,
+  handleOnSubmitForm,
 }: IAuthForm) {
-  return (
+  return authenticated ? (
+    <Redirect to="/journallist" />
+  ) : (
     <Container>
       <Link to="/">
         <img src={logo} alt="Noctural name logo" />
@@ -42,7 +46,7 @@ export default function AuthForm({
       <h1>{title}</h1>
 
       <Link to={linkPath}>{linkLabel}</Link>
-      <Form>
+      <Form onSubmit={handleOnSubmitForm}>
         <Input
           value={username}
           setValue={setUsername}
@@ -54,7 +58,7 @@ export default function AuthForm({
           value={password}
           setValue={setPassword}
           label={passwordLabel}
-          id="username"
+          id="password"
         />
         {forgotPassword && <Link to="/">Forgot Password?</Link>}
         {optionalEmail && (
