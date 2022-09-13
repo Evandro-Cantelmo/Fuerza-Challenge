@@ -14,13 +14,16 @@ export const Container = styled.div`
     height: 0;
 
     gap: 1.5rem;
+    @media only screen and (min-width: 728px) {
+      width: 100vw;
+      max-width: 100vw;
+    }
 
     a {
       color: inherit;
       text-decoration: none;
     }
     input {
-  
       padding: 15px;
       height: 48px;
       width: 100%;
@@ -35,12 +38,11 @@ export const Container = styled.div`
       border-radius: 4px;
       &::placeholder {
         color: ${theme.colors.brown.primary};
-      
       }
     }
 
     textarea {
-      padding: 15px;
+      padding: 15px 15px 0;
       min-height: 379px;
       width: 100%;
       outline: none;
@@ -55,19 +57,22 @@ export const Container = styled.div`
       border-radius: 4px;
       &::placeholder {
         color: ${theme.colors.brown.primary};
-        
       }
     }
   `}
 `;
 export const InputContainer = styled.div`
   width: 100vw;
-  padding: 10px 26px 32px;
+  padding: 10px 26px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
   flex-direction: column;
+  @media only screen and (min-width: 728px) {
+    width: 80vw;
+    padding: 0;
+  }
 `;
 export const Plus = styled.span`
   &::after {

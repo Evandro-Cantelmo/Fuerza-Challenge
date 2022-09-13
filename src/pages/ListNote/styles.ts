@@ -12,6 +12,10 @@ export const Container = styled.div`
   height: 0;
 
   gap: 1.5rem;
+  @media only screen and (min-width: 728px) {
+    width: 100vw;
+    max-width: 100vw;
+  }
 
   a {
     color: inherit;
@@ -27,6 +31,12 @@ export const GridContent = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-top: 0px;
+  @media only screen and (min-width: 728px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media only screen and (min-width: 1000px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 `;
 export const BoxContent = styled.div`
   display: flex;

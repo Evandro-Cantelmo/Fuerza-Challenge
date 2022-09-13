@@ -16,7 +16,19 @@ export const Container = styled.div`
     overflow-wrap: anywhere;
 
     gap: 1.5rem;
-
+    @media only screen and (min-width: 728px) {
+      width: 100vw;
+      max-width: 100vw;
+    }
+    div:nth-child(2) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      @media only screen and (min-width: 728px) {
+        width: 70%;
+      }
+    }
     a {
       color: inherit;
       text-decoration: none;
@@ -38,7 +50,6 @@ export const Container = styled.div`
       border-radius: 4px;
       &::placeholder {
         color: ${theme.colors.brown.primary};
-      
       }
     }
 
@@ -59,7 +70,6 @@ export const Container = styled.div`
       border-radius: 4px;
       &::placeholder {
         color: ${theme.colors.brown.primary};
-       
       }
     }
   `}

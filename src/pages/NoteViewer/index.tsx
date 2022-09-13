@@ -94,8 +94,9 @@ export default function NoteViewer() {
             linkPath={`/journallist/${journalId}`}
             title={journal?.title}
           />
+          <div>
           <h1>{entry?.title}</h1>
-          <p>{entry?.content}</p>
+          <p>{entry?.content}</p></div>
         </Container>
       ) : (
         <Loading />

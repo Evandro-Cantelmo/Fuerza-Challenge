@@ -32,6 +32,12 @@ export const GridContent = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-top: 40px;
+  @media only screen and (min-width: 728px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media only screen and (min-width: 1000px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 `;
 export const Plus = styled.span`
   &::after{
