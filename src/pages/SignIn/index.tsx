@@ -29,7 +29,7 @@ export default function SignIn() {
       toast.success('Signed in');
     } else {
     
-      toast.error('something went wrong');
+      toast.error('something went wrong, user not registered');
     }
   };
 
