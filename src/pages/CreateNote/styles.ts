@@ -20,7 +20,7 @@ export const Container = styled.div`
       text-decoration: none;
     }
     input {
-      margin-top: 30px;
+  
       padding: 0.4rem;
       height: 48px;
       width: 100%;
@@ -61,8 +61,13 @@ export const Container = styled.div`
   `}
 `;
 export const InputContainer = styled.div`
-  width: 100%;
-  padding: 20px 0 32px;
+  width: 100vw;
+  padding: 10px 26px 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-direction: column;
 `;
 export const Plus = styled.span`
   &::after {

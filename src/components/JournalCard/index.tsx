@@ -4,6 +4,7 @@ import { IJournalCard } from '../../interfaces/journalcard.interface';
 import { BigCard, Content } from './styles';
 
 export default function JournalCard({
+  id,
   link,
   linkPath,
   title,
@@ -18,6 +19,7 @@ export default function JournalCard({
   return link ? (
     <Link to={linkPath || '/'}>
       <BigCard
+        id={id}
         smallPartHeight={smallPartHeight}
         smallPartWidth={smallPartWidth}
         bigPartHeight={bigPartHeight}
@@ -31,6 +33,7 @@ export default function JournalCard({
     </Link>
   ) : (
     <BigCard
+    id={id}
       smallPartHeight={smallPartHeight}
       smallPartWidth={smallPartWidth}
       bigPartHeight={bigPartHeight}

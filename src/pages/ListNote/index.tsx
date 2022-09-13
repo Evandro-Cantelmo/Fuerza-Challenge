@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { Button, NavBar } from '../../components';
 import EmptyState from '../../components/EmptyState';
 import Header from '../../components/Header';
+import { AuthContext } from '../../context/AuthContext';
+import { Entry } from '../../interfaces/entry.interface';
+import { Journal } from '../../interfaces/journal.interface';
+import { INoteList } from '../../interfaces/noteList.interface';
+import http from '../../services/api';
 import { BoxContent, Container, GridContent, Plus } from './styles';
 
 /**
@@ -15,31 +21,84 @@ import { BoxContent, Container, GridContent, Plus } from './styles';
  */
 
 export default function ListNote() {
-  let test = [1, 2, 3, 4, 5, 6];
+  const [journal, setJournal] = useState<Journal>();
+  const [entries, setEntries] = useState<Entry[]>();
+
+  const { user, signOut } = useContext(AuthContext);
+
+  const { journalId } = useParams<INoteList>();
+
+  const history = useHistory();
+
+  const handleEditJournal = () => {
+    history.push(`/journallist/new/${journalId}?updateId=${journalId}`);
+  };
+
+  const addNote = () => {
+    history.push(`/note/new/${journalId}`);
+  };
+
+  const getJournals = useCallback(() => {
+    http.get(`/journals/${user.id}`).then((response: any) => {
+      if (response) {
+        setJournal(
+          response.journals.filter(
+            (journal: Journal) => journal.id === journalId
+          )[0] || null
+        );
+      } else {
+        console.log('failed fetching journals!');
+
+        signOut();
+      }
+    });
+  }, [user, journalId, signOut]);
+  const getEntries = useCallback(() => {
+    http.get(`/journals/entries/${journalId}`).then((response: any) => {
+      if (response) {
+        setEntries(response.entries as Entry[]);
+      } else {
+        console.log('failed fetching journals!');
+      }
+    });
+  }, [journalId]);
+  useEffect(() => {
+    getJournals();
+  }, [getJournals]);
+
+  useEffect(() => {
+    getEntries();
+  }, [getEntries]);
 
   return (
     <>
-      <Header/>
+      <Header>
+        <Button onClick={handleEditJournal} onOutline>
+          Edit journal
+        </Button>
+      </Header>
 
-      {test?.length < 1 ? (
-        <EmptyState linkPath="/" linkLabel="Create a note" />
-      ) : (
+      {entries?.length ? (
         <Container>
-                  <NavBar title="HTML">
-          <Button onOutline>
-            <Plus />
-            Add note
-          </Button>
-        </NavBar>
+          <NavBar linkPath="/" title={journal?.title}>
+            <Button onClick={addNote} onOutline>
+              <Plus />
+              Add note
+            </Button>
+          </NavBar>
           <GridContent>
-            {test?.map(() => (
-              <BoxContent key=''>
-                The h1, h2, h3, h4, h5, and h6 elements
-                dfsdfsdfsdfsfdsdfsdfsdfasfasdfadfafasdasdasdasdasd
-              </BoxContent>
+            {entries?.map((entry) => (
+              <Link to={`/journallist/${journalId}/${entry.id}`} key={entry.id}>
+                <BoxContent>{entry.title}</BoxContent>
+              </Link>
             ))}
           </GridContent>
         </Container>
+      ) : (
+        <EmptyState
+          linkPath={`/note/new/${journalId}`}
+          linkLabel="Create a note"
+        />
       )}
     </>
   );
