@@ -1,4 +1,6 @@
+import { toast } from 'react-hot-toast';
 /**
+ *
  * @export
  * @component
  * @name validatedForm
@@ -15,11 +17,11 @@ const validatedForm = ({
 }) => {
   if (!username.trim().length || !password.trim().length) {
     if (!username.trim().length) {
-      console.log('Username is required!');
+      toast.error('Username is required!');
     }
 
     if (!password.trim().length) {
-      console.log('Password is required!');
+      toast.error('Password is required!');
     }
 
     return false;

@@ -14,12 +14,14 @@ import { Entry } from '../../interfaces/entry.interface';
 import { Journal } from '../../interfaces/journal.interface';
 import http from '../../services/api';
 import { Container, InputContainer } from './styles';
+import { Toaster, toast } from 'react-hot-toast';
 
 export default function CreateNote() {
   const [content, setContent] = useState('');
 
   const [noteName, setNoteName] = useState('');
   const [journal, setJournal] = useState<Journal>();
+  const [error, setError] = useState(false);
 
   const handleTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setNoteName(e.target.value);
@@ -41,11 +43,13 @@ export default function CreateNote() {
 
     if (noteName.trim() === '' || content.trim() === '') {
       if (noteName.trim() === '') {
-        console.log('Name is required!');
+        setError(true);
+        toast.error('Name is required!');
       }
 
       if (content.trim() === '') {
-        console.log('Content is required!');
+        setError(true);
+        toast.error('Content is required!');
       }
       return null;
     }
@@ -57,7 +61,8 @@ export default function CreateNote() {
       });
 
       if (!response) {
-        console.log('failed creating the note!');
+        setError(true);
+        toast.error('failed creating the note!');
         return null;
       }
 
@@ -69,7 +74,8 @@ export default function CreateNote() {
       });
 
       if (!response) {
-        console.log('failed updating the note!');
+        setError(true);
+        toast.error('failed updating the note!');
         return null;
       }
 
@@ -80,7 +86,8 @@ export default function CreateNote() {
   const getJournals = useCallback(() => {
     http.get(`/journals/${user.id}`).then((response: any) => {
       if (!response) {
-        console.log('failed fetching journals on creating note!');
+        setError(true);
+        toast.error('failed fetching journals on creating note!');
         signOut();
         return null;
       }
@@ -115,6 +122,7 @@ export default function CreateNote() {
 
   return (
     <>
+      {error && <Toaster position="top-right"></Toaster>}
       <Header />
       <Container>
         <NavBar linkPath={`/journallist/${journalId}`} title={journal?.title} />

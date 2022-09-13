@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import AuthForm from '../../components/AuthForm';
 import { AuthContext } from '../../context/AuthContext';
 import validatedForm from '../../utils/validatedForm';
-
+import { Toaster, toast } from 'react-hot-toast';
 /**
  * @export
  * @component
@@ -29,30 +29,33 @@ export default function SignUp() {
     }
 
     if (await newAccount(username, password, email)) {
-      console.log('register success');
+      toast.success('register success');
       history.push('/');
     } else {
-      console.log('register failed!');
+      toast.success('register failed!');
     }
   };
 
   return (
-    <AuthForm
-      authenticated={isAuthenticated}
-      title="Sign Up"
-      linkLabel="Already have an account"
-      linkPath="/"
-      username={username}
-      password={password}
-      setUsername={setUsername}
-      setPassword={setPassword}
-      email={email}
-      setEmail={setEmail}
-      usernameLabel="Define a username"
-      passwordLabel="Define a password"
-      optionalEmail
-      submitButton="Create account"
-      handleOnSubmitForm={handleForm}
-    />
+    <>
+      <Toaster position="top-right"></Toaster>
+      <AuthForm
+        authenticated={isAuthenticated}
+        title="Sign Up"
+        linkLabel="Already have an account"
+        linkPath="/"
+        username={username}
+        password={password}
+        setUsername={setUsername}
+        setPassword={setPassword}
+        email={email}
+        setEmail={setEmail}
+        usernameLabel="Define a username"
+        passwordLabel="Define a password"
+        optionalEmail
+        submitButton="Create account"
+        handleOnSubmitForm={handleForm}
+      />
+    </>
   );
 }

@@ -8,6 +8,7 @@ import { Journal } from '../../interfaces/journal.interface';
 import { INoteViewer } from '../../interfaces/noteviewer.interface';
 import http from '../../services/api';
 import { Container } from './styles';
+import { Toaster, toast } from 'react-hot-toast';
 /**
  * @export
  * @component
@@ -21,6 +22,7 @@ import { Container } from './styles';
 export default function NoteViewer() {
   const [journal, setJournal] = useState<Journal>();
   const [entry, setEntry] = useState<Entry | null>();
+  const [error, setError] = useState(false);
 
   const { user, signOut } = useContext(AuthContext);
 
@@ -35,7 +37,8 @@ export default function NoteViewer() {
   const getJournals = useCallback(() => {
     http.get(`/journals/${user.id}`).then((response: any) => {
       if (!response) {
-        console.log('failed fetching journals!');
+        setError(true)
+        toast.error('failed fetching journals!');
 
         signOut();
 
@@ -57,7 +60,8 @@ export default function NoteViewer() {
     if (journal) {
       http.get(`/journals/entries/${journalId}`).then((response: any) => {
         if (!response) {
-          console.log('failed fetching entries!');
+          setError(true)
+          toast.error('failed fetching entries!');
           return;
         }
 
@@ -79,6 +83,7 @@ export default function NoteViewer() {
 
   return (
     <>
+      {error && <Toaster position="top-right"></Toaster>}
       <Header>
         <Button onClick={editNote} onOutline>
           Edit note

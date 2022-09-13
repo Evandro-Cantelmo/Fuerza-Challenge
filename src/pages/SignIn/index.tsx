@@ -1,5 +1,6 @@
 import React, { FormEvent, useContext, useState } from 'react';
 import AuthForm from '../../components/AuthForm';
+import { Toaster, toast } from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthContext';
 import validatedForm from '../../utils/validatedForm';
 
@@ -25,27 +26,31 @@ export default function SignIn() {
     }
 
     if (await authenticate(username, password)) {
-      console.log('Signed in');
+      toast.success('Signed in');
     } else {
-      console.log('something went wrong');
+    
+      toast.error('something went wrong');
     }
   };
 
   return (
-    <AuthForm
-      authenticated={isAuthenticated}
-      title="Sign in"
-      linkLabel="Sign up"
-      linkPath="/signup"
-      username={username}
-      password={password}
-      setUsername={setUsername}
-      setPassword={setPassword}
-      handleOnSubmitForm={handleForm}
-      usernameLabel="Your username"
-      passwordLabel="Your password"
-      forgotPassword
-      submitButton="Log In"
-    />
+    <>
+     <Toaster position="top-right"></Toaster>
+      <AuthForm
+        authenticated={isAuthenticated}
+        title="Sign in"
+        linkLabel="Sign up"
+        linkPath="/signup"
+        username={username}
+        password={password}
+        setUsername={setUsername}
+        setPassword={setPassword}
+        handleOnSubmitForm={handleForm}
+        usernameLabel="Your username"
+        passwordLabel="Your password"
+        forgotPassword
+        submitButton="Log In"
+      />
+    </>
   );
 }

@@ -10,6 +10,7 @@ import { Journal } from '../../interfaces/journal.interface';
 import http from '../../services/api';
 import theme from '../../styles/theme';
 import { Container, GridContent, Plus } from './styles';
+import { Toaster, toast } from 'react-hot-toast';
 
 /**
  * @export
@@ -23,7 +24,7 @@ import { Container, GridContent, Plus } from './styles';
 
 export default function ListJournal() {
   const [journals, setJournals] = useState<Journal[]>();
-
+  const [error, setError] = useState(false);
   const history = useHistory();
 
   const { user, signOut } = useContext(AuthContext);
@@ -38,7 +39,8 @@ export default function ListJournal() {
 
         setJournals(journals as Journal[]);
       } else {
-        console.log('Something went wrong! Please sign up and sign in again!');
+        setError(true);
+        toast.error('Something went wrong! Please sign up and sign in again!');
 
         signOut();
       }
@@ -50,6 +52,7 @@ export default function ListJournal() {
   }, [getJournals]);
   return (
     <>
+      {error && <Toaster position="top-right"></Toaster>}
       <Header>
         {journals?.length && (
           <Button onClick={addJournal} onOutline>
@@ -87,7 +90,6 @@ export default function ListJournal() {
         <EmptyState linkPath="/journallist/new" linkLabel="Create a journal" />
       ) : (
         <Loading></Loading>
-        
       )}
     </>
   );

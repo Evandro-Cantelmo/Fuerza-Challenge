@@ -13,6 +13,7 @@ import { Journal } from '../../interfaces/journal.interface';
 import http from '../../services/api';
 import theme from '../../styles/theme';
 import { Container, InputContainer } from './styles';
+import { Toaster, toast } from 'react-hot-toast';
 
 /**
  * @export
@@ -26,13 +27,14 @@ import { Container, InputContainer } from './styles';
 
 export default function CreateJournal() {
   const [journal, setJournal] = useState('');
+  const [error, setError] = useState(false);
 
   const { user, signOut } = useContext(AuthContext);
 
   const history = useHistory();
-  
+
   let updateIdQuery = new URLSearchParams(useLocation().search).get('updateId');
-  console.log(updateIdQuery)
+
   const getJournals = useCallback(() => {
     http.get(`/journals/${user.id}`).then((response: any) => {
       if (response) {
@@ -56,7 +58,8 @@ export default function CreateJournal() {
     e.preventDefault();
 
     if (!journal.trim().length) {
-      console.log('Journal name is required!');
+      setError(true)
+      toast.error('Journal name is required!');
       return null;
     }
 
@@ -67,7 +70,8 @@ export default function CreateJournal() {
       });
 
       if (!response) {
-        console.log('failed creating the journal!');
+        setError(true)
+        toast.error('failed creating the journal!');
         signOut();
 
         return null;
@@ -81,7 +85,8 @@ export default function CreateJournal() {
       });
 
       if (!response) {
-        console.log('failed updating the journal!');
+        setError(true)
+        toast.error('failed updating the journal!');
 
         return null;
       }
@@ -117,6 +122,8 @@ export default function CreateJournal() {
           <Button>Save journal</Button>
         </form>
       </Container>
+
+      {error && <Toaster position="top-right"></Toaster>}
     </>
   );
 }

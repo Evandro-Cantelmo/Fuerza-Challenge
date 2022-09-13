@@ -10,6 +10,7 @@ import { Journal } from '../../interfaces/journal.interface';
 import { INoteList } from '../../interfaces/noteList.interface';
 import http from '../../services/api';
 import { BoxContent, Container, GridContent, Plus } from './styles';
+import { Toaster, toast } from 'react-hot-toast';
 
 /**
  * @export
@@ -24,7 +25,7 @@ import { BoxContent, Container, GridContent, Plus } from './styles';
 export default function ListNote() {
   const [journal, setJournal] = useState<Journal>();
   const [entries, setEntries] = useState<Entry[]>();
-
+  const [error, setError] = useState(false);
   const { user, signOut } = useContext(AuthContext);
 
   const { journalId } = useParams<INoteList>();
@@ -48,7 +49,8 @@ export default function ListNote() {
           )[0] || null
         );
       } else {
-        console.log('failed fetching journals!');
+        setError(true)
+        toast.error('failed fetching journals!');
 
         signOut();
       }
@@ -59,7 +61,8 @@ export default function ListNote() {
       if (response) {
         setEntries(response.entries as Entry[]);
       } else {
-        console.log('failed fetching journals!');
+        setError(true)
+        toast.error('failed fetching journals!');
       }
     });
   }, [journalId]);
@@ -73,6 +76,7 @@ export default function ListNote() {
 
   return (
     <>
+      {error && <Toaster position="top-right"></Toaster>}
       <Header>
         <Button onClick={handleEditJournal} onOutline>
           Edit journal
