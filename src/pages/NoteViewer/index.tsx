@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Header, NavBar } from '../../components';
-import Loading from '../../components/Loading';
+import { Button, Header, NavBar, Loading } from '../../components';
 import { AuthContext } from '../../context/AuthContext';
 import { Entry } from '../../interfaces/entry.interface';
 import { Journal } from '../../interfaces/journal.interface';
@@ -37,7 +36,7 @@ export default function NoteViewer() {
   const getJournals = useCallback(() => {
     http.get(`/journals/${user.id}`).then((response: any) => {
       if (!response) {
-        setError(true)
+        setError(true);
         toast.error('failed fetching journals!');
 
         signOut();
@@ -60,7 +59,7 @@ export default function NoteViewer() {
     if (journal) {
       http.get(`/journals/entries/${journalId}`).then((response: any) => {
         if (!response) {
-          setError(true)
+          setError(true);
           toast.error('failed fetching entries!');
           return;
         }

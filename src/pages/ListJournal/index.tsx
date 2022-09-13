@@ -1,10 +1,13 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button } from '../../components';
-import EmptyState from '../../components/EmptyState';
-import Header from '../../components/Header';
-import JournalCard from '../../components/JournalCard';
-import Loading from '../../components/Loading';
+import {
+  Button,
+  EmptyState,
+  Header,
+  JournalCard,
+  Loading,
+} from '../../components';
+
 import { AuthContext } from '../../context/AuthContext';
 import { Journal } from '../../interfaces/journal.interface';
 import http from '../../services/api';
