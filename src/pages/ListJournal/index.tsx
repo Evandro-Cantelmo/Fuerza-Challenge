@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button } from '../../components';
 import EmptyState from '../../components/EmptyState';
 import Header from '../../components/Header';
 import JournalCard from '../../components/JournalCard';
+import { AuthContext } from '../../context/AuthContext';
+import { Journal } from '../../interfaces/journal.interface';
+import http from '../../services/api';
 import theme from '../../styles/theme';
 import { Container, GridContent, Plus } from './styles';
 
@@ -17,37 +21,72 @@ import { Container, GridContent, Plus } from './styles';
  */
 
 export default function ListJournal() {
-  let test = [1, 2, 3, 4, 5, 6];
+  const [journals, setJournals] = useState<Journal[]>();
 
+  const history = useHistory();
+
+  const { user, signOut } = useContext(AuthContext);
+  
+
+  const addJournal = () => {
+    history.push('/journallist/new');
+  };
+  const getJournals = useCallback(() => {
+    http.get(`/journals/${user.id}`).then((response: any) => {
+      if (response) {
+        const { journals } = response;
+
+        setJournals(journals as Journal[]);
+      } else {
+        console.log(
+          "Something went wrong! Please sign up and sign in again!"
+        );
+
+        signOut();
+      }
+    });
+  }, [signOut, user]);
+
+  useEffect(() => {
+    getJournals();
+  }, [getJournals]);
   return (
     <>
-      <Header>{test?.length && <Button onOutline><Plus/>Add Journal</Button>}</Header>
-      {test?.length < 1 ? (
-        <EmptyState linkPath="/" linkLabel="Create a journal" />
-      ) : (
+      <Header>
+        {journals?.length && (
+          <Button onClick={addJournal} onOutline>
+            <Plus />
+            Add Journal
+          </Button>
+        )}
+      </Header>
+      {journals?.length ? (
         <Container>
           <GridContent>
-            {test?.map((tes, index) => (
+            {journals?.map((tes, index) => (
               <JournalCard
-                key=""
+                id={tes.id}
+                key={tes.id}
                 bigPartHeight="201px"
                 smallPartHeight="201px"
                 bigPartWidth="144.92px"
                 smallPartWidth="11.31px"
                 link
-                linkPath="/"
+                linkPath={`/journallist/${tes.id}`}
                 bigPartColor={
-                  index % 2 == 0
+                  index % 2 === 0
                     ? theme.colors.blue.tertiary
                     : theme.colors.blue.primary
                 }
-                letterColor={index % 2 == 0 ? '' : theme.colors.white}
+                letterColor={index % 2 === 0 ? '' : theme.colors.white}
                 smallPartColor={theme.colors.blue.secondary}
-                title="test"
+                title={tes.title}
               />
             ))}
           </GridContent>
         </Container>
+      ) : (
+        <EmptyState linkPath="/journallist/new" linkLabel="Create a journal" />
       )}
     </>
   );

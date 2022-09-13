@@ -18,6 +18,13 @@ export const Container = styled.div`
     color: inherit;
     text-decoration: none;
   }
+  form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+  }
 `;
 export const InputContainer = styled.div`
   width: 100%;
