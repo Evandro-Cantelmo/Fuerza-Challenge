@@ -4,6 +4,7 @@ import { Button } from '../../components';
 import EmptyState from '../../components/EmptyState';
 import Header from '../../components/Header';
 import JournalCard from '../../components/JournalCard';
+import Loading from '../../components/Loading';
 import { AuthContext } from '../../context/AuthContext';
 import { Journal } from '../../interfaces/journal.interface';
 import http from '../../services/api';
@@ -26,7 +27,6 @@ export default function ListJournal() {
   const history = useHistory();
 
   const { user, signOut } = useContext(AuthContext);
-  
 
   const addJournal = () => {
     history.push('/journallist/new');
@@ -38,9 +38,7 @@ export default function ListJournal() {
 
         setJournals(journals as Journal[]);
       } else {
-        console.log(
-          "Something went wrong! Please sign up and sign in again!"
-        );
+        console.log('Something went wrong! Please sign up and sign in again!');
 
         signOut();
       }
@@ -85,8 +83,11 @@ export default function ListJournal() {
             ))}
           </GridContent>
         </Container>
-      ) : (
+      ) : journals ? (
         <EmptyState linkPath="/journallist/new" linkLabel="Create a journal" />
+      ) : (
+        <Loading></Loading>
+        
       )}
     </>
   );

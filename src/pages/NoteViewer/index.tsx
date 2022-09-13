@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button, Header, NavBar } from '../../components';
+import Loading from '../../components/Loading';
 import { AuthContext } from '../../context/AuthContext';
 import { Entry } from '../../interfaces/entry.interface';
 import { Journal } from '../../interfaces/journal.interface';
@@ -83,11 +84,18 @@ export default function NoteViewer() {
           Edit note
         </Button>
       </Header>
-      <Container>
-        <NavBar linkPath={`/journallist/${journalId}`} title={journal?.title} />
-        <h1>{entry?.title}</h1>
-        <p>{entry?.content}</p>
-      </Container>
+      {entry ? (
+        <Container>
+          <NavBar
+            linkPath={`/journallist/${journalId}`}
+            title={journal?.title}
+          />
+          <h1>{entry?.title}</h1>
+          <p>{entry?.content}</p>
+        </Container>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 }

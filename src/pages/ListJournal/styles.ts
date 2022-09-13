@@ -16,6 +16,12 @@ export const Container = styled.div`
     color: inherit;
     text-decoration: none;
   }
+  span{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+  }
 `;
 export const InputContainer = styled.div`
   width: 100%;

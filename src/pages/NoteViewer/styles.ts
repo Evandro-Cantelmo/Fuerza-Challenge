@@ -27,6 +27,7 @@ export const Container = styled.div`
       height: 48px;
       width: 100%;
       outline: none;
+      padding: 15px;
 
       font-weight: 600;
 
@@ -37,7 +38,7 @@ export const Container = styled.div`
       border-radius: 4px;
       &::placeholder {
         color: ${theme.colors.brown.primary};
-        padding: 10px;
+      
       }
     }
 
@@ -49,6 +50,7 @@ export const Container = styled.div`
 
       resize: none;
       font-weight: 600;
+      padding: 15px;
 
       color: ${theme.colors.brown.primary};
       background: rgba(255, 255, 255, 0.42);
@@ -57,7 +59,7 @@ export const Container = styled.div`
       border-radius: 4px;
       &::placeholder {
         color: ${theme.colors.brown.primary};
-        padding: 10px;
+       
       }
     }
   `}

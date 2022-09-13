@@ -3,6 +3,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { Button, NavBar } from '../../components';
 import EmptyState from '../../components/EmptyState';
 import Header from '../../components/Header';
+import Loading from '../../components/Loading';
 import { AuthContext } from '../../context/AuthContext';
 import { Entry } from '../../interfaces/entry.interface';
 import { Journal } from '../../interfaces/journal.interface';
@@ -94,12 +95,12 @@ export default function ListNote() {
             ))}
           </GridContent>
         </Container>
-      ) : (
+      ) : entries? (
         <EmptyState
           linkPath={`/note/new/${journalId}`}
           linkLabel="Create a note"
         />
-      )}
+      ):(<Loading/>)}
     </>
   );
 }

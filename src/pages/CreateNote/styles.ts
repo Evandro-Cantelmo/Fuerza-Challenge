@@ -21,7 +21,7 @@ export const Container = styled.div`
     }
     input {
   
-      padding: 0.4rem;
+      padding: 15px;
       height: 48px;
       width: 100%;
       outline: none;
@@ -35,12 +35,12 @@ export const Container = styled.div`
       border-radius: 4px;
       &::placeholder {
         color: ${theme.colors.brown.primary};
-        padding: 10px;
+      
       }
     }
 
     textarea {
-      padding: 0.4rem;
+      padding: 15px;
       min-height: 379px;
       width: 100%;
       outline: none;
@@ -55,7 +55,7 @@ export const Container = styled.div`
       border-radius: 4px;
       &::placeholder {
         color: ${theme.colors.brown.primary};
-        padding: 10px;
+        
       }
     }
   `}

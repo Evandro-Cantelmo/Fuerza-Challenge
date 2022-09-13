@@ -38,7 +38,7 @@ export const Content = styled.div`
 
     width: 100%;
 
-    padding: 10px 10px 10px 0;
+    padding: 10px;
 
     border-radius: 0px 16px 16px 0px;
 
