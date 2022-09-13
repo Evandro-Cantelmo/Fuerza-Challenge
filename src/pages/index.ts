@@ -4,3 +4,4 @@ export { default as CreateJournal } from './CreateJournal';
 export { default as CreateNote } from './CreateNote';
 export { default as ListJournal } from './ListJournal';
 export { default as ListNote } from './ListNote';
+export { default as NoteViewer } from './NoteViewer';

@@ -1,6 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { SignIn, SignUp, CreateJournal, ListJournal, ListNote, CreateNote } from '../pages';
+import {
+  SignIn,
+  SignUp,
+  CreateJournal,
+  ListJournal,
+  ListNote,
+  CreateNote,
+  NoteViewer,
+} from '../pages';
+
+import PrivateRoute from './PrivateRoutes';
 
 /**
  * @export
@@ -18,10 +28,19 @@ export const Routes = () => {
       <Switch>
         <Route path="/" exact component={SignIn} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/journallist" component={ListJournal} />
-        <Route path="/journalnote" component={ListNote} />
-        <Route path="/createjournal" component={CreateJournal} />
-        <Route path="/createnote" component={CreateNote} />
+
+        <PrivateRoute exact path="/journallist" component={ListJournal} />
+        <PrivateRoute path="/journallist/new" component={CreateJournal} />
+        <PrivateRoute
+          exact
+          path="/journallist/:journalId"
+          component={ListNote}
+        />
+        <PrivateRoute path="/note/new/:journalId" component={CreateNote} />
+        <PrivateRoute
+          path="/journallist/:journalId/:noteId"
+          component={NoteViewer}
+        />
       </Switch>
     </BrowserRouter>
   );
