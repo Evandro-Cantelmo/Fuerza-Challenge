@@ -15,13 +15,13 @@ import { INavBar } from '../../interfaces/navbar.interface';
  * NavBar component
  */
 
-export default function NavBar({ children, title }: INavBar) {
+export default function NavBar({ children, title, linkPath }: INavBar) {
   return (
     <Container>
       <HeaderContent>
-        <Link to="/">
+        <Link to={linkPath}>
           <span>
-            <img src={arrowLeft}></img>
+            <img src={arrowLeft} alt="left arrow"></img>
             {title}
           </span>
         </Link>
