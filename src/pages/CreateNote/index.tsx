@@ -16,6 +16,16 @@ import http from '../../services/api';
 import { Container, InputContainer } from './styles';
 import { Toaster, toast } from 'react-hot-toast';
 
+/**
+ * @export
+ * @component
+ * @name CreateNote
+ *
+ *
+ * @description
+ * Creation note page
+ */
+
 export default function CreateNote() {
   const [content, setContent] = useState('');
 

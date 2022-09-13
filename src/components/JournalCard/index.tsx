@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom';
 import { IJournalCard } from '../../interfaces/journalcard.interface';
 import { BigCard, Content } from './styles';
 
+/**
+ * @export
+ * @component
+ * @name JournalCard
+ *
+ *
+ * @description
+ * Cards in journal
+ */
+
 export default function JournalCard({
   id,
   link,
